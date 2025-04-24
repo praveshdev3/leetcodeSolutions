@@ -3,18 +3,17 @@ func isAnagram(s string, t string) bool {
         return false
     }
 
-    runeMap := map[rune]int{}
+    runeMap := make(map[rune]int)
     for _,r := range s{
-        runeMap[r]++
+      runeMap[r]++
     }
 
     for _,r := range t{
-        if v,ok := runeMap[r]; ok && v>0{
+      if v,ok := runeMap[r]; ok && v>0{
             runeMap[r]--
         }else{
             return false
         }
     }
-
     return true
 }

@@ -1,14 +1,14 @@
 func search(nums []int, target int) int {
-    left := 0
-    right := len(nums) - 1
-    for left <= right{
-        mid := (left + right) / 2
-        if nums[mid] == target {
+    low := 0
+    high := len(nums)-1
+    for low <= high{
+        mid := (low + high)/2
+        if nums[mid] == target{
             return mid
         } else if nums[mid] < target{
-            left = mid + 1
-        } else {
-            right = right - 1
+             low = mid+1
+        } else{
+            high = mid-1
         }
     }
     return -1

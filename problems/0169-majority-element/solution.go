@@ -1,19 +1,19 @@
 func majorityElement(nums []int) int {
-count := 1
-majorityElement := nums[0]
+	count := 1
+	majorityElement := nums[0]
 
-for i:=1; i<len(nums);i++{
-    if count <= 0{
-        majorityElement = nums[i]
-        count++
-    }else{
-        if majorityElement == nums[i] {
-            count++
-        }else{
-            count--
-        }
-    }
-}
+	for i := 1; i < len(nums); i++ {
+		if count == 0 {
+			majorityElement = nums[i]
+			count++
+		} else {
+			if majorityElement == nums[i] {
+				count++
+			} else {
+				count--
+			}
+		}
+	}
 
-return majorityElement
+    return majorityElement
 }

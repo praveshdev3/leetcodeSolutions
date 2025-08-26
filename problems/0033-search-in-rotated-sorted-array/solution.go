@@ -1,32 +1,25 @@
 func search(nums []int, target int) int {
-    low,high := 0,len(nums)-1
-    for low <= high{
+    low := 0
+    high := len(nums)-1
+    pos := -1
+    for low<=high{
         mid := (low+high)/2
-
         if nums[mid] == target{
-            return mid
-        }
-
-        if nums[low] <= nums[mid]{
-            if target < nums[mid] && target >= nums[low] {
+            pos = mid
+            break
+        }else if nums[low]<=nums[mid]{
+            if target < nums[mid] && target >= nums[low]{
                 high = mid - 1
-            } else{
+            }else{
                 low = mid + 1
             }
-        } else {
-            if target > nums[mid] && target <= nums[high] {
+        }else{
+            if target > nums[mid] && target <= nums[high]{
                 low = mid + 1
-            } else{
+            }else{
                 high = mid - 1
             }
         }
     }
-    return -1
+    return pos
 }
-
-    // for index,num := range nums {
-    //     if target == num{
-    //         return index
-    //     }
-    // }
-    // return -1

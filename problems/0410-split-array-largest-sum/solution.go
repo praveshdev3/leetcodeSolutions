@@ -1,40 +1,37 @@
 func splitArray(nums []int, k int) int {
-    max := 0
-    sum := 0
+    high := 0
+    low := 0
 
     for _,num := range nums{
-        if num > max{
-            max = num
+        if num > low{
+            low = num
         }
-        sum += num
+        high += num
     }
-    
-    left := max
-    right := sum 
 
-    for left < right{
-        mid := (left + right) / 2
-        if canSplit(nums,k,mid) {
-            right = mid
+    for low <= high{
+        mid := (low+high)/2
+        p := isValid(nums,mid)
+        if p > k{
+            low = mid+1
         }else{
-            left = mid + 1
+            high = mid-1
         }
     }
-    return left
+
+    return low
 }
 
-func canSplit(nums []int, k int, maxSum int) bool{
-    count := 1
+func isValid(nums []int, mid int)int{
     sum := 0
-    for _, num := range nums{
-        sum += num
-        if sum > maxSum{
+    count := 0
+    for _,num := range nums{
+        if sum + num <= mid{
+            sum += num
+        }else{
             count++
             sum = num
         }
-        if count > k{
-            return false
-        }
     }
-    return true
+    return count+1
 }

@@ -6,10 +6,12 @@
  * }
  */
 func middleNode(head *ListNode) *ListNode {
-    slowPointer,fastPointer := head,head
-    for fastPointer != nil && fastPointer.Next!=nil {
-        slowPointer = slowPointer.Next
+    slowPointer, fastPointer := head, head
+
+    for fastPointer != nil && fastPointer.Next != nil{
         fastPointer = fastPointer.Next.Next
+        slowPointer = slowPointer.Next
     }
+    
     return slowPointer
 }
